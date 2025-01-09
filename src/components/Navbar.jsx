@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import SmallLogo from './SmallLogo'
+import WalletWidget from './WalletWidget'
 
 export default function Navbar() {
   const navigate = useNavigate()
@@ -28,29 +29,39 @@ export default function Navbar() {
             </Link>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="flex items-center space-x-8">
-                <NavLink to="/about">About</NavLink>
-                <NavLink to="/vision">Our Vision</NavLink>
-                <NavLink to="/ai">AI Features</NavLink>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => navigate('/signup')}
-                  className="bg-yellow-500 text-black px-6 py-2 rounded-full font-semibold tracking-tight"
-                >
-                  Sign Up
-                </motion.button>
-              </div>
+            <div className="hidden md:flex md:items-center md:space-x-8">
+              <NavLink to="/about">About</NavLink>
+              <NavLink to="/vision">Our Vision</NavLink>
+              <NavLink to="/ai">AI Features</NavLink>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/signup')}
+                className="bg-yellow-500/10 text-yellow-500 px-6 py-2 rounded-full font-semibold tracking-tight border border-yellow-500/20 hover:bg-yellow-500/20 transition-all"
+              >
+                Sign Up
+              </motion.button>
+              <WalletWidget />
             </div>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={toggleMenu}
-              className="md:hidden p-2 rounded-lg text-gray-300 hover:text-yellow-500 transition-colors"
-            >
-              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
+            <div className="flex items-center space-x-4 md:hidden">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/signup')}
+                className="bg-yellow-500/10 text-yellow-500 px-4 py-2 rounded-full font-medium text-sm border border-yellow-500/20 hover:bg-yellow-500/20 transition-all"
+              >
+                Sign Up
+              </motion.button>
+              <WalletWidget />
+              <button
+                onClick={toggleMenu}
+                className="p-2 rounded-lg text-gray-300 hover:text-yellow-500 transition-colors"
+              >
+                {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -75,14 +86,6 @@ export default function Navbar() {
                 <MobileNavLink onClick={() => handleNavigate('/ai')}>
                   AI Features
                 </MobileNavLink>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleNavigate('/signup')}
-                  className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold tracking-tight w-full max-w-xs text-center"
-                >
-                  Sign Up
-                </motion.button>
               </div>
             </div>
           </motion.div>

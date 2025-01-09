@@ -9,9 +9,14 @@ import AIFeaturesPage from './pages/AIFeaturesPage'
 import PersonalityTest from './pages/PersonalityTest'
 import ParticleBackground from './components/ParticleBackground'
 import Footer from './components/Footer'
+import Toast from './components/Toast'
+import { useToast } from './hooks/useToast'
+import { useWindowSize } from './hooks/useWindowSize'
 
 export default function App() {
   const location = useLocation()
+  const { toast } = useToast()
+  const windowSize = useWindowSize()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -34,6 +39,7 @@ export default function App() {
       <div className="relative z-10">
         <Footer />
       </div>
+      {toast && <Toast message={toast.message} type={toast.type} />}
     </div>
   )
 }
