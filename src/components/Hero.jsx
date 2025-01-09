@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaGithub } from 'react-icons/fa'
+import { FaGithub, FaTwitter } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
@@ -27,11 +27,25 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="flex justify-center gap-4"
+          className="flex justify-center gap-4 flex-wrap"
         >
-          <button className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-400 transition-colors tracking-tight">
-            Buy Now
-          </button>
+          <motion.a
+            href="https://dexscreener.com/solana"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold hover:bg-yellow-400 transition-colors tracking-tight flex items-center"
+          >
+            <div className="w-6 h-6 mr-2 overflow-hidden rounded-full">
+              <img 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM71iXHCepoAajfegEt-v0D8Ge8-t-S1oSZQ&s" 
+                alt="DEXScreener" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            DEXScreener
+          </motion.a>
           <a
             href="https://github.com/findr"
             target="_blank"
@@ -40,6 +54,15 @@ export default function Hero() {
           >
             <FaGithub className="text-xl" />
             GitHub
+          </a>
+          <a
+            href="https://x.com/sadlinnyxo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-yellow-500 text-yellow-500 px-8 py-3 rounded-full font-semibold hover:bg-yellow-500/10 transition-colors flex items-center gap-2 tracking-tight"
+          >
+            <FaTwitter className="text-xl" />
+            Twitter
           </a>
         </motion.div>
       </div>
