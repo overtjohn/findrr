@@ -163,32 +163,32 @@ const scenarios = [
 
 const categoryDescriptions = {
   "Virgin": {
-    title: "Virgin",
+    title: "Digital Observer",
     description: "Master of digital realms and virtual connections. Your power lies in understanding the deepest layers of online consciousness. You navigate the virtual world with unmatched insight, seeing patterns and possibilities others miss.",
     quote: "In silence, you've found your voice; in observation, your strength."
   },
   "Crayon Eater": {
-    title: "Crayon Eater",
+    title: "Chaos Innovator",
     description: "Unconventional thinker with unique perspectives. Your strength comes from seeing the world differently, finding solutions where others see confusion. You turn chaos into creativity.",
     quote: "Sometimes the most colorful paths lead to the brightest insights."
   },
   "Newsy Johnson": {
-    title: "Newsy Johnson",
+    title: "Information Sovereign",
     description: "Guardian of knowledge and current events. Your strength comes from understanding the complex web of information that shapes our world. You build bridges between facts and understanding.",
     quote: "Through knowledge flows power; through understanding, wisdom."
   },
   "Darwinist": {
-    title: "Darwinist",
+    title: "Evolution Pioneer",
     description: "Champion of adaptation and growth. You see beyond current limitations, pushing the boundaries of what's possible. Your adaptive intelligence and competitive spirit drive personal and collective growth.",
     quote: "In the game of evolution, you've become the catalyst."
   },
   "Onchain Savant": {
-    title: "Onchain Savant",
+    title: "Blockchain Oracle",
     description: "Master of the digital ledger. Your intuitive understanding of blockchain technology and onchain dynamics sets you apart. You see the patterns in the data that others miss.",
     quote: "Every transaction tells a story; you read them all."
   },
   "Vexbolts Follower": {
-    title: "Vexbolts Follower",
+    title: "Community Vanguard",
     description: "Part of an elite digital collective. You understand the power of community and shared vision. Your connection to forward-thinking groups puts you at the forefront of social evolution.",
     quote: "Together we build, divided we fall."
   }
