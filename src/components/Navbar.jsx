@@ -1,38 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import SmallLogo from './SmallLogo'
 
 export default function Navbar() {
   const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const handleNavigate = (path) => {
+    navigate(path)
+    setIsMenuOpen(false)
+  }
 
   return (
-    <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-yellow-600/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center">
-            <SmallLogo />
-            <span className="text-2xl font-extrabold gradient-text tracking-tighter">FINDR</span>
-          </Link>
-          
-          <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
-              <NavLink to="/about">About</NavLink>
-              <NavLink to="/vision">Our Vision</NavLink>
-              <NavLink to="/ai">AI Features</NavLink>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate('/signup')}
-                className="bg-yellow-500 text-black px-6 py-2 rounded-full font-semibold tracking-tight"
-              >
-                Sign Up
-              </motion.button>
+    <>
+      <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-sm border-b border-yellow-500/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="flex items-center">
+              <SmallLogo />
+              <span className="text-2xl font-extrabold gradient-text tracking-tighter">FINDR</span>
+            </Link>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:block">
+              <div className="flex items-center space-x-8">
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/vision">Our Vision</NavLink>
+                <NavLink to="/ai">AI Features</NavLink>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => navigate('/signup')}
+                  className="bg-yellow-500 text-black px-6 py-2 rounded-full font-semibold tracking-tight"
+                >
+                  Sign Up
+                </motion.button>
+              </div>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className="md:hidden p-2 rounded-lg text-gray-300 hover:text-yellow-500 transition-colors"
+            >
+              {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="fixed inset-0 z-40 md:hidden"
+          >
+            <div className="fixed inset-0 bg-black/95 backdrop-blur-lg pt-16">
+              <div className="flex flex-col items-center space-y-6 p-8">
+                <MobileNavLink onClick={() => handleNavigate('/about')}>
+                  About
+                </MobileNavLink>
+                <MobileNavLink onClick={() => handleNavigate('/vision')}>
+                  Our Vision
+                </MobileNavLink>
+                <MobileNavLink onClick={() => handleNavigate('/ai')}>
+                  AI Features
+                </MobileNavLink>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleNavigate('/signup')}
+                  className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold tracking-tight w-full max-w-xs text-center"
+                >
+                  Sign Up
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
@@ -44,5 +100,17 @@ function NavLink({ to, children }) {
     >
       {children}
     </Link>
+  )
+}
+
+function MobileNavLink({ onClick, children }) {
+  return (
+    <motion.button
+      whileTap={{ scale: 0.95 }}
+      onClick={onClick}
+      className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 font-medium tracking-tight text-xl w-full max-w-xs text-center py-3"
+    >
+      {children}
+    </motion.button>
   )
 }

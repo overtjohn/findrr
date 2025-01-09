@@ -1,5 +1,5 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import SignUpPage from './pages/SignUpPage'
@@ -11,6 +11,12 @@ import ParticleBackground from './components/ParticleBackground'
 import Footer from './components/Footer'
 
 export default function App() {
+  const location = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+
   return (
     <div className="min-h-screen bg-black relative flex flex-col">
       <ParticleBackground />
