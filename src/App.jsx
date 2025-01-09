@@ -6,6 +6,7 @@ import SignUpPage from './pages/SignUpPage'
 import AboutPage from './pages/AboutPage'
 import VisionPage from './pages/VisionPage'
 import AIFeaturesPage from './pages/AIFeaturesPage'
+import PersonalityTest from './pages/PersonalityTest'
 import ParticleBackground from './components/ParticleBackground'
 import Footer from './components/Footer'
 
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/vision" element={<VisionPage />} />
           <Route path="/ai" element={<AIFeaturesPage />} />
+          <Route path="/personality-test" element={<PersonalityTest />} />
         </Routes>
       </div>
       <div className="relative z-10">

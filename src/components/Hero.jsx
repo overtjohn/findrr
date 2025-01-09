@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import Logo from './Logo'
 
 export default function Hero() {
@@ -50,6 +51,15 @@ export default function Hero() {
       >
         <Logo />
       </motion.div>
+      <Link to="/personality-test">
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-yellow-500/20 hover:bg-yellow-500/30 text-yellow-500 px-12 py-4 rounded-full font-bold text-xl tracking-tight border border-yellow-500/50 transition-all"
+        >
+          START
+        </motion.button>
+      </Link>
     </div>
   )
 }
